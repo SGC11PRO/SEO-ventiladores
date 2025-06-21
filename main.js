@@ -27,6 +27,20 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   })
 })
 
+// Newsletter form handling
+const newsletterForm = document.querySelector(".newsletter__form")
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", function (e) {
+    e.preventDefault()
+    const email = this.querySelector(".newsletter__input").value
+
+    if (email) {
+      // Aquí integrarías con tu servicio de email marketing
+      alert("¡Gracias por suscribirte! Te mantendremos informado de las mejores ofertas.")
+      this.querySelector(".newsletter__input").value = ""
+    }
+  })
+}
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -222,29 +236,243 @@ window.addEventListener("scroll", debouncedScrollHandler)
 document.addEventListener("DOMContentLoaded", () => {
   console.log("VentiladorSinAspas.com loaded successfully!")
 
-  // Add any initialization code here
+  // Inicializar funcionalidades
+  initializeNavigation()
+  initializeAnimations()
+  initializeCalculator()
+})
 
-  // Highlight current section in navigation
-  const sections = document.querySelectorAll("section[id]")
-  const navLinks = document.querySelectorAll(".nav__link")
+// Función para inicializar la calculadora
+function initializeCalculator() {
+  const calculatorForm = document.getElementById("calculator-form")
+  if (!calculatorForm) {
+    console.warn("Calculadora no encontrada")
+    return
+  }
 
-  function highlightNav() {
-    let current = ""
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.clientHeight
-      if (scrollY >= sectionTop - 200) {
-        current = section.getAttribute("id")
+  // Mejorar la interactividad de las opciones de radio
+  const radioOptions = calculatorForm.querySelectorAll(".radio-option")
+  radioOptions.forEach((option) => {
+    option.addEventListener("click", function () {
+      const input = this.querySelector('input[type="radio"]')
+      if (input) {
+        input.checked = true
+
+        // Remover selección previa del mismo grupo
+        const groupName = input.name
+        const groupOptions = calculatorForm.querySelectorAll(`input[name="${groupName}"]`)
+        groupOptions.forEach((radio) => {
+          const parentOption = radio.closest(".radio-option")
+          if (parentOption) {
+            parentOption.classList.remove("selected")
+          }
+        })
+
+        // Añadir clase de seleccionado
+        this.classList.add("selected")
       }
     })
+  })
+}
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active")
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active")
-      }
+// Función para inicializar navegación
+function initializeNavigation() {
+  const navToggle = document.getElementById("nav-toggle")
+  const navMenu = document.getElementById("nav-menu")
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active")
     })
   }
 
-  window.addEventListener("scroll", highlightNav)
+  // Cerrar menú móvil al hacer clic en un enlace
+  document.querySelectorAll(".nav__link").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navMenu) {
+        navMenu.classList.remove("active")
+      }
+    })
+  })
+}
+
+// Función para inicializar animaciones
+function initializeAnimations() {
+  // Intersection Observer para animaciones
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1"
+        entry.target.style.transform = "translateY(0)"
+      }
+    })
+  }, observerOptions)
+
+  // Observar elementos para animación
+  const animatedElements = document.querySelectorAll(
+    ".product__card, .benefit__card, .testimonial__card, .comparison-card",
+  )
+  animatedElements.forEach((el) => {
+    el.style.opacity = "0"
+    el.style.transform = "translateY(30px)"
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
+    observer.observe(el)
+  })
+}
+
+// Calculadora de Recomendación - VERSIÓN CORREGIDA
+function calculateRecommendation() {
+  // Obtener el formulario correctamente
+  const form = document.getElementById("calculator-form")
+
+  if (!form) {
+    console.error("Formulario no encontrado")
+    return
+  }
+
+  let traditionalScore = 0
+  let bladelessScore = 0
+
+  // Obtener todas las respuestas seleccionadas
+  const selectedInputs = form.querySelectorAll('input[type="radio"]:checked')
+
+  // Verificar que se hayan respondido todas las preguntas
+  if (selectedInputs.length < 3) {
+    alert("Por favor, responde todas las preguntas para obtener una recomendación precisa.")
+    return
+  }
+
+  // Calcular puntuaciones
+  selectedInputs.forEach((input) => {
+    const traditionalPoints = Number.parseInt(input.getAttribute("data-traditional")) || 0
+    const bladelessPoints = Number.parseInt(input.getAttribute("data-bladeless")) || 0
+
+    traditionalScore += traditionalPoints
+    bladelessScore += bladelessPoints
+  })
+
+  // Mostrar resultado
+  showRecommendationResult(traditionalScore, bladelessScore)
+}
+
+// Nueva función para mostrar el resultado
+function showRecommendationResult(traditionalScore, bladelessScore) {
+  const resultDiv = document.getElementById("recommendation-result")
+  const resultText = document.getElementById("result-text")
+  const traditionalBtn = document.getElementById("traditional-btn")
+  const bladelessBtn = document.getElementById("bladeless-btn")
+
+  if (!resultDiv || !resultText) {
+    console.error("Elementos de resultado no encontrados")
+    return
+  }
+
+  let recommendation = ""
+  let recommendationType = ""
+
+  if (traditionalScore > bladelessScore) {
+    recommendationType = "traditional"
+    recommendation = `
+      <strong>Te recomendamos ventiladores CON ASPAS</strong><br><br>
+      Basado en tus respuestas, los ventiladores tradicionales con aspas son la mejor opción para ti. 
+      Ofrecen mayor potencia de aire, mejor relación calidad-precio y son ideales para espacios grandes.
+      <br><br>
+      <em>Puntuación: Tradicionales ${traditionalScore}/6 vs Sin Aspas ${bladelessScore}/6</em>
+    `
+    if (traditionalBtn) traditionalBtn.style.display = "inline-block"
+    if (bladelessBtn) bladelessBtn.style.display = "none"
+  } else if (bladelessScore > traditionalScore) {
+    recommendationType = "bladeless"
+    recommendation = `
+      <strong>Te recomendamos ventiladores SIN ASPAS</strong><br><br>
+      Según tus preferencias, los ventiladores sin aspas son perfectos para ti. 
+      Ofrecen máxima seguridad, funcionamiento ultra silencioso y tecnología avanzada con purificación de aire.
+      <br><br>
+      <em>Puntuación: Sin Aspas ${bladelessScore}/6 vs Tradicionales ${traditionalScore}/6</em>
+    `
+    if (bladelessBtn) bladelessBtn.style.display = "inline-block"
+    if (traditionalBtn) traditionalBtn.style.display = "none"
+  } else {
+    recommendationType = "tie"
+    recommendation = `
+      <strong>¡Es un empate!</strong><br><br>
+      Ambos tipos de ventiladores podrían funcionar bien para ti. Te recomendamos revisar nuestras 
+      comparativas detalladas y considerar tu presupuesto final para tomar la decisión.
+      <br><br>
+      <em>Puntuación: Empate ${traditionalScore}/6</em>
+    `
+    if (traditionalBtn) traditionalBtn.style.display = "inline-block"
+    if (bladelessBtn) bladelessBtn.style.display = "inline-block"
+  }
+
+  resultText.innerHTML = recommendation
+  resultDiv.style.display = "block"
+
+  // Scroll suave al resultado
+  setTimeout(() => {
+    resultDiv.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    })
+  }, 100)
+
+  // Tracking para analytics
+  if (typeof trackClick === "function") {
+    trackClick(`calculator-result-${recommendationType}`, "recommendation_calculator")
+  }
+}
+
+// Animación de las barras de rendimiento cuando entran en vista
+const performanceObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll(".performance-fill")
+        bars.forEach((bar, index) => {
+          setTimeout(() => {
+            bar.style.width = bar.style.width || "0%"
+          }, index * 200)
+        })
+      }
+    })
+  },
+  { threshold: 0.5 },
+)
+
+// Observar las tarjetas de comparación
+document.querySelectorAll(".comparison-card").forEach((card) => {
+  performanceObserver.observe(card)
 })
+
+// Mejorar la interactividad de las opciones de radio
+document.querySelectorAll(".radio-option").forEach((option) => {
+  option.addEventListener("click", function () {
+    const input = this.querySelector('input[type="radio"]')
+    input.checked = true
+
+    // Remover selección previa del mismo grupo
+    const groupName = input.name
+    document.querySelectorAll(`input[name="${groupName}"]`).forEach((radio) => {
+      radio.closest(".radio-option").classList.remove("selected")
+    })
+
+    // Añadir clase de seleccionado
+    this.classList.add("selected")
+  })
+})
+
+// Añadir estilos dinámicos para opciones seleccionadas
+const style = document.createElement("style")
+style.textContent = `
+    .radio-option.selected {
+        border-color: var(--primary-color) !important;
+        background: rgba(37, 99, 235, 0.1) !important;
+        transform: scale(1.02);
+    }
+`
+document.head.appendChild(style)

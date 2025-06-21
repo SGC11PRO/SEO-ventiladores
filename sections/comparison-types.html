@@ -6,6 +6,8 @@
     <title>TopVentiladores | Comparación</title>
 
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 
 </head>
 <body>
@@ -30,47 +32,448 @@
         </nav>
     </header>
 
-    <!-- Comparación Con Aspas vs Sin Aspas -->
-    <section class="vs-section">
-        <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">¿Con Aspas o Sin Aspas?</h2>
-                <p class="section__subtitle">Conoce las diferencias para tomar la mejor decisión</p>
-            </div>
-            
-            <div class="vs-grid">
-                <div class="vs-item">
-                    <div class="vs-icon">
-                        <i class="fas fa-fan"></i>
+<!-- Comparación Detallada: Con Aspas vs Sin Aspas -->
+<section class="detailed-comparison">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">¿Con Aspas o Sin Aspas?</h2>
+            <p class="section__subtitle">Análisis completo para ayudarte a tomar la mejor decisión</p>
+        </div>
+        
+        <!-- Comparación Visual Principal -->
+        <div class="main-comparison">
+            <div class="comparison-card traditional">
+                <div class="card-header">
+                    <div class="product-visual">
+                        <img src="/images/cecotec.png" alt="Ventilador con aspas" class="comparison-image">
+                        <div class="visual-badge">
+                            <i class="fas fa-fan"></i>
+                        </div>
                     </div>
-                    <h3>Con Aspas</h3>
-                    <ul class="vs-pros">
-                        <li><i class="fas fa-check"></i> Más económicos</li>
-                        <li><i class="fas fa-check"></i> Mayor flujo de aire</li>
-                        <li><i class="fas fa-check"></i> Variedad de diseños</li>
-                        <li><i class="fas fa-check"></i> Fácil mantenimiento</li>
-                    </ul>
-                    <div class="vs-price">Desde €89</div>
+                    <h3 class="card-title">Ventiladores con Aspas</h3>
+                    <p class="card-subtitle">Tecnología tradicional y probada</p>
                 </div>
                 
-                <div class="vs-divider">VS</div>
-                
-                <div class="vs-item">
-                    <div class="vs-icon">
-                        <i class="fas fa-wind"></i>
+                <div class="card-content">
+                    <div class="price-range">
+                        <span class="price-from">Desde 55€</span>
+                        <span class="price-to">hasta €450</span>
                     </div>
-                    <h3>Sin Aspas</h3>
-                    <ul class="vs-pros">
-                        <li><i class="fas fa-check"></i> 100% seguros</li>
-                        <li><i class="fas fa-check"></i> Ultra silenciosos</li>
-                        <li><i class="fas fa-check"></i> Purificación de aire</li>
-                        <li><i class="fas fa-check"></i> Tecnología avanzada</li>
-                    </ul>
-                    <div class="vs-price">Desde €199</div>
+                    
+                    <div class="key-features">
+                        <div class="feature-item">
+                            <i class="fas fa-euro-sign feature-icon positive"></i>
+                            <span>Más económicos</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-wind feature-icon positive"></i>
+                            <span>Mayor flujo de aire</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-palette feature-icon positive"></i>
+                            <span>Más variedad de diseños</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tools feature-icon positive"></i>
+                            <span>Fácil reparación</span>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-bars">
+                        <div class="performance-item">
+                            <span class="performance-label">Precio</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="performance-score">9/10</span>
+                        </div>
+                        <div class="performance-item">
+                            <span class="performance-label">Potencia</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="performance-score">8.5/10</span>
+                        </div>
+                        <div class="performance-item">
+                            <span class="performance-label">Silencio</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 60%"></div>
+                            </div>
+                            <span class="performance-score">6/10</span>
+                        </div>
+                        <div class="performance-item">
+                            <span class="performance-label">Seguridad</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 70%"></div>
+                            </div>
+                            <span class="performance-score">7/10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vs-divider">
+                <div class="vs-circle">VS</div>
+                <div class="vs-line"></div>
+            </div>
+            
+            <div class="comparison-card bladeless">
+                <div class="card-header">
+                    <div class="product-visual">
+                        <img src="/images/jocca.png" alt="Ventilador sin aspas" class="comparison-image bladeless-img">
+                        <div class="visual-badge">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Ventiladores sin Aspas</h3>
+                    <p class="card-subtitle">Tecnología avanzada y segura</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="price-range">
+                        <span class="price-from">Desde 80€</span>
+                        <span class="price-to">hasta 650€</span>
+                    </div>
+                    
+                    <div class="key-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt feature-icon positive"></i>
+                            <span>100% seguros</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-volume-mute feature-icon positive"></i>
+                            <span>Ultra silenciosos</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-leaf feature-icon positive"></i>
+                            <span>Purificación de aire</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt feature-icon positive"></i>
+                            <span>Control inteligente</span>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-bars">
+                        <div class="performance-item">
+                            <span class="performance-label">Precio</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 50%"></div>
+                            </div>
+                            <span class="performance-score">5/10</span>
+                        </div>
+                        <div class="performance-item">
+                            <span class="performance-label">Potencia</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="performance-score">7.5/10</span>
+                        </div>
+                        <div class="performance-item">
+                            <span class="performance-label">Silencio</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="performance-score">9.5/10</span>
+                        </div>
+                        <div class="performance-item">
+                            <span class="performance-label">Seguridad</span>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="performance-score">10/10</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <!-- Tabla Comparativa Detallada -->
+        <div class="detailed-table-section">
+            <h3 class="table-title">Comparación Técnica Detallada</h3>
+            <div class="comparison-table-wrapper">
+                <table class="detailed-comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th class="traditional-col">
+                                <i class="fas fa-fan"></i>
+                                Con Aspas
+                            </th>
+                            <th class="bladeless-col">
+                                <i class="fas fa-wind"></i>
+                                Sin Aspas
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Rango de Precio</strong></td>
+                            <td class="traditional-cell">€55 - €450</td>
+                            <td class="bladeless-cell">€80 - €650</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nivel de Ruido</strong></td>
+                            <td class="traditional-cell">45-70 dB</td>
+                            <td class="bladeless-cell">20-60 dB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Consumo Energético</strong></td>
+                            <td class="traditional-cell">50-89W</td>
+                            <td class="bladeless-cell">40-65W</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flujo de Aire</strong></td>
+                            <td class="traditional-cell">
+                                <span class="rating excellent">Excelente</span>
+                            </td>
+                            <td class="bladeless-cell">
+                                <span class="rating good">Bueno</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seguridad</strong></td>
+                            <td class="traditional-cell">
+                                <span class="rating moderate">Moderada</span>
+                                <small>Aspas expuestas</small>
+                            </td>
+                            <td class="bladeless-cell">
+                                <span class="rating excellent">Excelente</span>
+                                <small>Sin partes móviles expuestas</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mantenimiento y Limpieza</strong></td>
+                            <td class="traditional-cell">
+                                <span class="rating moderate">Regular</span>
+                                <small>Limpieza de aspas</small>
+                            </td>
+                            <td class="bladeless-cell">
+                                <span class="rating good">Fácil</span>
+                                <small>Solo superficie exterior</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Funciones Extra</strong></td>
+                            <td class="traditional-cell">
+                                <ul class="feature-list">
+                                    <li>Ventilación natural</li>
+                                    <li>Mayor caudal de aire directo</li>
+                                    <li>Reversible (invierno/verano)</li>
+                                </ul>
+                            </td>
+                            <td class="bladeless-cell">
+                                <ul class="feature-list">
+                                    <li>Mayor seguridad</li>
+                                    <li>Diseño moderno y minimalista</li>
+                                    <li>Purificación de aire integrada (en algunos modelos)</li>
+                                    <li>Funcionamiento ultra silencioso</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vida Útil</strong></td>
+                            <td class="traditional-cell">15-20 años</td>
+                            <td class="bladeless-cell">10-15 años</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instalación</strong></td>
+                            <td class="traditional-cell">
+                                <span class="rating good">Estándar</span>
+                                <small>Requiere soporte de techo</small>
+                            </td>
+                            <td class="bladeless-cell">
+                                <span class="rating excellent">Fácil</span>
+                                <small>Plug & play</small>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Casos de Uso Recomendados -->
+        <div class="use-cases-section">
+            <h3 class="section-subtitle">¿Cuál es Mejor para Ti?</h3>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>Sala de Estar Grande</h4>
+                    <p class="use-case-description">Espacios amplios que necesitan máximo flujo de aire</p>
+                    <div class="recommendation">
+                        <span class="recommended-type traditional">Con Aspas</span>
+                        <span class="reason">Mayor potencia y cobertura</span>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h4>Dormitorio</h4>
+                    <p class="use-case-description">Necesitas silencio para un descanso perfecto</p>
+                    <div class="recommendation">
+                        <span class="recommended-type bladeless">Sin Aspas</span>
+                        <span class="reason">Ultra silencioso (20-25 dB)</span>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h4>Habitación Infantil</h4>
+                    <p class="use-case-description">Seguridad total para niños pequeños</p>
+                    <div class="recommendation">
+                        <span class="recommended-type bladeless">Sin Aspas</span>
+                        <span class="reason">100% seguro, sin riesgo</span>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h4>Oficina en Casa</h4>
+                    <p class="use-case-description">Trabajo concentrado y videollamadas</p>
+                    <div class="recommendation">
+                        <span class="recommended-type bladeless">Sin Aspas</span>
+                        <span class="reason">Silencioso + purifica el aire</span>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h4>Presupuesto Ajustado</h4>
+                    <p class="use-case-description">Máximo rendimiento por euro invertido</p>
+                    <div class="recommendation">
+                        <span class="recommended-type traditional">Con Aspas</span>
+                        <span class="reason">Mejor relación calidad-precio</span>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h4>Alergias/Asma</h4>
+                    <p class="use-case-description">Necesitas aire limpio y purificado</p>
+                    <div class="recommendation">
+                        <span class="recommended-type bladeless">Sin Aspas</span>
+                        <span class="reason">Filtros HEPA integrados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calculadora de Decisión -->
+        <div class="decision-calculator">
+            <h3 class="calculator-title">Calculadora de Decisión</h3>
+            <p class="calculator-subtitle">Responde estas preguntas y te recomendaremos el tipo ideal</p>
+            
+            <form class="calculator-form" id="calculator-form">
+                <div class="question-group">
+                    <label class="question-label">¿Cuál es tu presupuesto máximo?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="low" data-traditional="2" data-bladeless="0">
+                            <span class="radio-custom"></span>
+                            Menos de €150
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="medium" data-traditional="1" data-bladeless="1">
+                            <span class="radio-custom"></span>
+                            €150 - €300
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="high" data-traditional="0" data-bladeless="2">
+                            <span class="radio-custom"></span>
+                            Más de €300
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">¿Qué es más importante para ti?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="priority" value="power" data-traditional="2" data-bladeless="0">
+                            <span class="radio-custom"></span>
+                            Máxima potencia de aire
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="priority" value="silence" data-traditional="0" data-bladeless="2">
+                            <span class="radio-custom"></span>
+                            Funcionamiento silencioso
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="priority" value="safety" data-traditional="0" data-bladeless="2">
+                            <span class="radio-custom"></span>
+                            Seguridad total
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">¿Dónde lo vas a usar principalmente?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="location" value="living" data-traditional="2" data-bladeless="0">
+                            <span class="radio-custom"></span>
+                            Sala de estar/Salón
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="location" value="bedroom" data-traditional="0" data-bladeless="2">
+                            <span class="radio-custom"></span>
+                            Dormitorio
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="location" value="office" data-traditional="0" data-bladeless="2">
+                            <span class="radio-custom"></span>
+                            Oficina/Estudio
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="location" value="kids" data-traditional="0" data-bladeless="2">
+                            <span class="radio-custom"></span>
+                            Habitación infantil
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="button" class="calculate-btn" onclick="calculateRecommendation()">
+                    <i class="fas fa-calculator"></i>
+                    Obtener Recomendación
+                </button>
+                
+                <div class="recommendation-result" id="recommendation-result" style="display: none;">
+                    <div class="result-content">
+                        <div class="result-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4 class="result-title">Nuestra Recomendación</h4>
+                        <div class="result-recommendation" id="result-text"></div>
+                        <div class="result-actions">
+                            <a href="/sections/traditional-fans.html" class="result-btn traditional" id="traditional-btn" style="display: none;">
+                                Ver Ventiladores con Aspas
+                            </a>
+                            <a href="/sections/bladeless-fans.html" class="result-btn bladeless" id="bladeless-btn" style="display: none;">
+                                Ver Ventiladores sin Aspas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<script src="/main.js"></script>
+
 
 </body>
 </html>
