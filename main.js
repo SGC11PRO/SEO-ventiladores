@@ -107,19 +107,44 @@ this.observer.observe(el)})}
 handleIntersection(entries){entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.style.opacity="1"
 entry.target.style.transform="translateY(0)"
 this.observer.unobserve(entry.target)}})}}
-class HeaderScroll{constructor(){this.header=document.querySelector(".header")
-this.lastScrollTop=0
-this.scrollThreshold=100
-if(this.header){this.init()}}
-init(){window.addEventListener("scroll",this.debounce(this.handleScroll.bind(this),10))}
-handleScroll(){const scrollTop=window.pageYOffset||document.documentElement.scrollTop
-if(scrollTop>this.scrollThreshold){if(scrollTop>this.lastScrollTop){this.header.style.transform="translateY(-100%)"}else{this.header.style.transform="translateY(0)"}}else{this.header.style.transform="translateY(0)"}
-this.lastScrollTop=scrollTop}
-debounce(func,wait){let timeout
-return function executedFunction(...args){const later=()=>{clearTimeout(timeout)
-func(...args)}
-clearTimeout(timeout)
-timeout=setTimeout(later,wait)}}}
+class HeaderScroll {
+    constructor() {
+        this.header = document.querySelector(".header");
+        this.lastScrollTop = 0;
+        this.scrollThreshold = 10; // Small threshold to trigger the effect
+        if (this.header) {
+            this.init();
+        }
+    }
+
+    init() {
+        window.addEventListener("scroll", this.debounce(this.handleScroll.bind(this), 10));
+        // Initial check in case the page is already scrolled
+        this.handleScroll();
+    }
+
+    handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > this.scrollThreshold) {
+            this.header.classList.add("scrolled");
+        } else {
+            this.header.classList.remove("scrolled");
+        }
+        this.lastScrollTop = scrollTop;
+    }
+
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+}
 class ProductCards{constructor(){this.cards=document.querySelectorAll(".product__card")
 this.init()}
 init(){this.cards.forEach((card)=>{if(window.matchMedia("(hover: hover)").matches){card.addEventListener("mouseenter",this.handleMouseEnter.bind(this))
@@ -237,6 +262,75 @@ console.log("Page Load Time:",perfData.loadEventEnd-perfData.loadEventStart,"ms"
 let scrollCount=0
 window.addEventListener("scroll",()=>{scrollCount++
 if(scrollCount%100===0){console.log("Scroll events:",scrollCount)}})}}
+class MobileNavigation {
+    constructor() {
+        this.navToggle = document.getElementById("nav-toggle")
+        this.navMenu = document.getElementById("nav-menu")
+        this.navLinks = document.querySelectorAll(".nav__link")
+        this.init()
+    }
+
+    init() {
+        if (this.navToggle && this.navMenu) {
+            this.navToggle.addEventListener("click", this.toggleMenu.bind(this))
+            this.navLinks.forEach(link => {
+                link.addEventListener("click", this.closeMenu.bind(this))
+            })
+            
+            // Close menu when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!this.navMenu.contains(e.target) && !this.navToggle.contains(e.target)) {
+                    this.closeMenu()
+                }
+            })
+            
+            // Handle escape key
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    this.closeMenu()
+                }
+            })
+        }
+    }
+
+    toggleMenu() {
+        this.navMenu.classList.toggle("active")
+        this.navToggle.classList.toggle("active")
+        const header = document.querySelector(".header");
+        if (header) {
+            header.classList.toggle("menu-active", this.navMenu.classList.contains("active"));
+        }
+        
+        // Toggle hamburger icon
+        const icon = this.navToggle.querySelector("i")
+        if (this.navMenu.classList.contains("active")) {
+            icon.classList.remove("fa-bars")
+            icon.classList.add("fa-times")
+        } else {
+            icon.classList.remove("fa-times")
+            icon.classList.add("fa-bars")
+        }
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = this.navMenu.classList.contains("active") ? "hidden" : ""
+    }
+
+    closeMenu() {
+        this.navMenu.classList.remove("active")
+        this.navToggle.classList.remove("active")
+        const header = document.querySelector(".header");
+        if (header) {
+            header.classList.remove("menu-active");
+        }
+        
+        const icon = this.navToggle.querySelector("i")
+        icon.classList.remove("fa-times")
+        icon.classList.add("fa-bars")
+        
+        document.body.style.overflow = ""
+    }
+}
+
 class App{constructor(){this.init()}
 init(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",this.initializeComponents.bind(this))}else{this.initializeComponents()}}
 initializeComponents(){console.log("VentiladorSinAspas.com loaded successfully!")
@@ -249,10 +343,24 @@ new LazyLoading()
 new PriceAnimation()
 new Newsletter()
 new PerformanceMonitor()
-new Analytics()
-initSmoothScrolling()
+this.initSmoothScrolling()
 this.addRippleStyles()
 window.addEventListener("orientationchange",()=>{setTimeout(()=>{window.scrollTo(0,window.scrollY)},100)})}
+
+initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault()
+            const target = document.querySelector(this.getAttribute("href"))
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                })
+            }
+        })
+    })
+}
 addRippleStyles(){const style=document.createElement("style")
 style.textContent=`
             @keyframes ripple {
