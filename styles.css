@@ -1779,12 +1779,16 @@ body {
 		gap: 1rem;
 	}
 
+	.vs-grid .vs-item:first-child {
+		order: 1;
+	}
+
 	.vs-divider {
-		transform: rotate(90deg);
-		font-size: 2rem;
-		order: 2;
-		flex-direction: row;
-		padding: 1rem 0;
+		display: none;
+	}
+
+	.vs-grid .vs-item:last-child {
+		order: 3;
 	}
 
 	.vs-circle {
