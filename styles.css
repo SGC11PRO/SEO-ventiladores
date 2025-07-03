@@ -777,7 +777,8 @@ body {
 		transform: translateX(0);
 		opacity: 1;
 		visibility: visible;
-		background: var(--white);
+		background: var(--white) !important;
+		z-index: 1000;
 	}
 
 	.nav__menu li {
