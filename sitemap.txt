@@ -1,0 +1,3 @@
+https://topventiladores.netlify.app/sections/comparison-types
+https://topventiladores.netlify.app/sections/con-aspas
+https://topventiladores.netlify.app/sections/sin-aspas
